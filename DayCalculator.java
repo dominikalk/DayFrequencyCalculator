@@ -1,8 +1,13 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 public class DayCalculator {
-    final private static String[] daysOfTheWeek = {"Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"};
+    final private static String[] daysOfTheWeek = {"Saturday", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
 
+    /**
+     * Used to get the day of the week from the date given
+     * @param date
+     * @return The day of the week of the date
+     */
     public static String dayOfWeek( Date date ) {
         int y = date.getYear();
         int m = date.getMonth();
@@ -25,6 +30,11 @@ public class DayCalculator {
         return daysOfTheWeek[day];
     }
 
+    /**
+     * Used to get the most frequent day of the week from a list of dates
+     * @param dates
+     * @return The most frequent day of the week in the list of dates
+     */
     public static String mostFrequentDayOfWeek( ArrayList<Date> dates ) {
         if(dates.size() == 0) return null;
         int[] dayNumbers = new int[7];
