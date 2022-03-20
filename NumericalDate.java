@@ -16,7 +16,7 @@ public class NumericalDate extends Date {
             y = Integer.parseInt(dateStrings[2]);
 
         } catch (Exception e) {
-            Program.exitProgram("Incorrect date type.");
+            Helpers.exitProgram("There was an incorrect date type provided.");
         }
     }
 }

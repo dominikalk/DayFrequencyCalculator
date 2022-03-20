@@ -26,7 +26,7 @@ public class LexicalDate extends Date {
             y = Integer.parseInt(DATE_STRINGS[2]);
 
         } catch (Exception e) {
-            Program.exitProgram("Incorrect date type.");
+            Helpers.exitProgram("There was an incorrect date type provided.");
         }
     }
 }
