@@ -1,15 +1,15 @@
 public abstract class Date implements IDate {
-    private int d;
-    private int m;
-    private int y;
+    protected int d;
+    protected int m;
+    protected int y;
 
-    public void Date(String date) {
+    public Date(String date) {
         deconstructDate(date);
     }
 
     abstract public void deconstructDate(String date);
 
-    public int getDate() {
+    public int getDay() {
         return d;
     }
 

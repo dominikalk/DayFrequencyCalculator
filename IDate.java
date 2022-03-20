@@ -1,9 +1,5 @@
 public interface IDate {
-    int d;
-    int m;
-    int y;
-
-    void deconstructDate(String date);
+    void deconstructDate(String date) throws Exception;
     int getDay();
     int getMonth();
     int getYear();
