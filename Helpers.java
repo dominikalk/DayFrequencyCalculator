@@ -91,7 +91,7 @@ public class Helpers {
      * @param dateString
      * @return boolean of whether the string could be a date
      */
-    public static boolean checkIsDate(String dateString){
+    public static boolean checkIntendedDate(String dateString){
         final String FORMATED_INPUT = dateString.toLowerCase();
         return FORMATED_INPUT.contains("-") 
             || FORMATED_INPUT.contains("/")
@@ -109,5 +109,40 @@ public class Helpers {
         Helpers.printLine(prefix + "- \"7th March 2022\"");
         Helpers.printLine(prefix + "- \"07/03/2022\" [dd/mm/yyyy]");
         Helpers.printLine(prefix + "- \"07-03-2022\" [dd-mm-yyyy]");
+        Helpers.printLine(prefix + "- (Date must be 1753 onwards)");
+    }
+
+    /**
+     * Given a date, it checks if it is valid. I.e. the month isnt above 12 etc.
+     * @param date
+     * @return Boolean whether it is a valid date.
+     */
+    public static boolean isValidDate(Date date) throws Exception {
+        final int D = date.getDay();
+        final int M = date.getMonth();
+        final int Y = date.getYear();
+
+        // Check year
+        if (Y < 1753) return false;   
+        // Check month 
+        if (M > 12) return false;
+        
+        // Month of 31 days
+        if ((M < 8 && M % 2 == 1) || (M >=8 && M % 2 == 0)) {
+            if (D > 31) return false;
+        }
+        // Checking for february
+        else if (M == 2){
+            // Leap year
+            if (((Y % 4 == 0) && (Y % 100 != 0)) || (Y % 400 == 0)) {
+                if (D > 29) return false; 
+            }
+            // Not leap year
+            else if (D > 28) return false;
+        }
+        // Month of 30 days
+        else if (D > 30) return false;
+
+        return true;
     }
 }

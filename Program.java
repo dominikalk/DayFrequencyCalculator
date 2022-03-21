@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Program {
+
     private static void printArgumentsError() {
         Helpers.printLine("\nYou can provide no arguments and follow the instructions, or follow these rules if you provide one:");
         Helpers.printLine("- If you provide an argument you cannot provide more that one, which must be a file or date,");
@@ -16,6 +17,11 @@ public class Program {
         } else {
             Helpers.printLine("\nThere were no dates in that file.");
         }
+    }
+
+    private static void printDayOfWeek(String input) {
+        Date date = Helpers.createDate(input);
+        Helpers.printLine("\nThe day of the week on the " + input + " is: " + DayCalculator.dayOfWeek(date));
     }
 
     private static void mostFrequentDateLoop() {
@@ -61,30 +67,25 @@ public class Program {
         }
     }
 
-    private static void printDayOfWeek(String input) {
-        Date date = Helpers.createDate(input);
-        Helpers.printLine("\nThe day of the week on the " + input + " is: " + DayCalculator.dayOfWeek(date));
-    }
-
-    private static void handleNoInput() {
-        boolean continuetLoop = true;
+    private static void noInputLoop() {
+        boolean continueLoop = true;
         Helpers.printLine("\nWould you like to work out the most frequent day of the week from a list of dates (1), work out the day of the week for a single one (2), or exit (3)? (1-3): ");
-        while (continuetLoop){
+        while (continueLoop){
             switch (Helpers.readLine().trim()){
                 // Logic for most frequent date
                 case "1":
                     mostFrequentDateLoop();
-                    continuetLoop = false;
+                    continueLoop = false;
                     break;
                 // Logic for day of week
                 case "2":
                     Helpers.printLine("\nWhat date would you like the day of the week for?: ");
                     printDayOfWeek(Helpers.readLine());
-                    continuetLoop = false;
+                    continueLoop = false;
                     break;
                 // Logic for exit program
                 case "3":
-                    continuetLoop = false;
+                    continueLoop = false;
                     break;
                 // Logic for invalid input
                 default:
@@ -98,7 +99,7 @@ public class Program {
         switch (args.length){
             // Given no inputs the program asks the user what they want, otherwise it assumes what they want.
             case 0:
-                handleNoInput();
+                noInputLoop();
                 break;
             // Given 1 input the program assumes what they want to do
             case 1:
@@ -109,7 +110,7 @@ public class Program {
                     mostFrequentDayFromFile(INPUT);
                 } 
                 // If the user submits a date it assumes they want the day of the week
-                else if (Helpers.checkIsDate(INPUT)) {
+                else if (Helpers.checkIntendedDate(INPUT)) {
                     printDayOfWeek(INPUT);
                 } 
                 // Otherwise it is an invalid input and the program informs the user

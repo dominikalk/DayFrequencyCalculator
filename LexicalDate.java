@@ -25,6 +25,8 @@ public class LexicalDate extends Date {
 
             y = Integer.parseInt(DATE_STRINGS[2]);
 
+            if (!Helpers.isValidDate(this)) throw new Exception();
+
         } catch (Exception e) {
             Helpers.printLine("\nThere was an incorrect date type provided, the date must one of the following formats:");
             Helpers.printValidDateFormats("");
