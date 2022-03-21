@@ -10,7 +10,8 @@ public class Program {
         Helpers.printValidDateFormats("\t");
     }
 
-    private static void mostFrequentDayFromFile(String file) {
+    // Prints most frequent date from file
+    private static void printDates(String file) {
         ArrayList<Date> dateList = Helpers.readFile(file);
         if (dateList.size() > 0) {
             Helpers.printLine("\nThe most frequent day of the week in \"" + file + "\" is: " + DayCalculator.mostFrequentDayOfWeek(dateList));
@@ -36,7 +37,7 @@ public class Program {
                     if (!file.endsWith(".txt")) {
                         Helpers.printLine("\nInvalid file type. It must be a text file (.txt).");
                     } else {
-                        mostFrequentDayFromFile(file);
+                        printDates(file);
                     }
                     continueLoop = false;
                     break;
@@ -45,9 +46,9 @@ public class Program {
                     Helpers.printLine("\nWrite out the dates, ending with an empty line: ");
                     ArrayList<Date> dateList = new ArrayList<Date>();
                     while (true) {
-                        String input = Helpers.readLine().trim();
-                        if (input.equals("")) break;
-                        dateList.add(Helpers.createDate(input));
+                        final String INPUT = Helpers.readLine().trim();
+                        if (INPUT.equals("")) break;
+                        dateList.add(Helpers.createDate(INPUT));
                     }
                     if (dateList.size() > 0) {
                         Helpers.printLine("\nThe most frequent day of the week is: " + DayCalculator.mostFrequentDayOfWeek(dateList));
@@ -107,7 +108,7 @@ public class Program {
 
                 // If the user submits a file it assumes they want the most frequent day
                 if (INPUT.endsWith(".txt")){
-                    mostFrequentDayFromFile(INPUT);
+                    printDates(INPUT);
                 } 
                 // If the user submits a date it assumes they want the day of the week
                 else if (Helpers.checkIntendedDate(INPUT)) {

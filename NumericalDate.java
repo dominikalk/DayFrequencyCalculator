@@ -4,16 +4,16 @@ public class NumericalDate extends Date {
     }
 
     public void deconstructDate(String date) {
-        final String[] dateStrings = date.trim().split("[-/]");
+        final String[] DATE_STRINGS = date.trim().split("[-/]");
 
         try {
-            if (dateStrings.length != 3){
+            if (DATE_STRINGS.length != 3){
                 throw new Exception();
             }
             
-            d = Integer.parseInt(dateStrings[0]);
-            m = Integer.parseInt(dateStrings[1]);
-            y = Integer.parseInt(dateStrings[2]);
+            d = Integer.parseInt(DATE_STRINGS[0]);
+            m = Integer.parseInt(DATE_STRINGS[1]);
+            y = Integer.parseInt(DATE_STRINGS[2]);
 
             if (!Helpers.isValidDate(this)) throw new Exception();
 
