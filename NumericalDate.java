@@ -19,7 +19,7 @@ public class NumericalDate extends Date {
 
         } catch (Exception e) {
             Helpers.printLine(date);
-            Helpers.printLine("\nThere was an incorrect date type provided, the date must one of the following formats:");
+            Helpers.printLine("\nThere was an incorrect date type provided, (" + date + "), the date must one of the following formats:");
             Helpers.printValidDateFormats("");
             Helpers.exitProgram();
         }
